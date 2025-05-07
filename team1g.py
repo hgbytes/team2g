@@ -1,6 +1,27 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
+
+try:
+    import matplotlib.pyplot as plt
+    import numpy as np
+except ImportError:
+    st.error("""
+    ## Required packages are missing
+
+    This application requires the following packages:
+    - matplotlib
+    - numpy
+
+    Please install them using:
+    ```
+    pip install matplotlib numpy
+    ```
+
+    Or if you're using a container or virtual environment:
+    ```
+    pip install -r requirements.txt
+    ```
+    """)
+    st.stop()
 
 # Coefficients for different materials (linear expansion, per °C)
 materials = {
